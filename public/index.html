@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>kprss reader</title>
+    <link rel="stylesheet" href="assets/app.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand">
+          <p class="app-title">Kprss reader</p>
+          <p id="pageTitle" class="visually-hidden">Loading...</p>
+        </div>
+        <div class="date-controls" aria-label="date controls">
+          <button id="prevDay" class="icon-button" type="button" title="前日" aria-label="前日">
+            <span aria-hidden="true">‹</span>
+          </button>
+          <input id="datePicker" type="text" inputmode="numeric" placeholder="YYYY-MM-DD" aria-label="日付を選択">
+          <button id="todayDay" type="button" title="Today">Today</button>
+          <button id="nextDay" class="icon-button" type="button" title="翌日" aria-label="翌日">
+            <span aria-hidden="true">›</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="toolbar" aria-label="article controls">
+        <button id="startReading" type="button" title="読む">
+          <span aria-hidden="true">✓</span>
+          <span class="button-label">読む</span>
+        </button>
+        <button id="toggleAllExpanded" class="icon-button stacked-toggle" type="button" title="全展開" aria-label="全展開">
+          <span class="box-toggle-icon" aria-hidden="true"></span>
+        </button>
+        <button id="copyStarred" class="icon-button copy-visible" type="button" title="表示記事をMarkdownコピー" aria-label="表示記事をMarkdownコピー">
+          <span class="copy-icon" aria-hidden="true">⧉</span>
+        </button>
+      </section>
+
+      <section class="status-line" aria-live="polite">
+        <span id="articleCount"></span>
+        <span id="copyStatus"></span>
+      </section>
+
+      <section id="articles" class="article-list"></section>
+    </main>
+
+    <template id="articleTemplate">
+      <article class="article">
+        <div class="article-head">
+          <button class="select-article icon-button" type="button" title="読む記事にする" aria-label="読む記事にする">
+            <span aria-hidden="true">✓</span>
+          </button>
+          <div class="headline-block">
+            <div class="meta"></div>
+            <button class="title-button" type="button"></button>
+          </div>
+        </div>
+        <div class="article-body">
+          <p class="article-text"></p>
+          <a class="source-link" target="_blank" rel="noreferrer">source</a>
+          <div class="article-footer-actions">
+            <button class="copy-one icon-button" type="button" title="Markdownコピー" aria-label="Markdownコピー">
+              <span class="copy-icon" aria-hidden="true">⧉</span>
+            </button>
+            <button class="collapse-one" type="button">折りたたむ</button>
+            <button class="unselect-one" type="button">もう読まない</button>
+          </div>
+          <div class="article-images"></div>
+        </div>
+      </article>
+    </template>
+
+    <script src="assets/app.js" defer></script>
+  </body>
+</html>
