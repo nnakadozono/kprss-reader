@@ -126,6 +126,13 @@ CloudFront should make clipboard behavior more reliable.
 
 ## Deployment direction
 
-See [docs/PLAN.md](docs/PLAN.md) for the AWS plan. The intended production shape
-is S3 static hosting behind CloudFront with Basic Auth, plus a generator Lambda
-that runs when the uploaded database zip changes.
+The first production hosting step is intended to use the existing `kprss` S3
+bucket under a reader site prefix, behind CloudFront with Basic Auth. Manual app
+deploys are supported by `scripts/deploy_site.sh`. See
+[docs/HOSTING.md](docs/HOSTING.md).
+
+The later direction is a generator Lambda that runs when the uploaded database
+zip changes. See [docs/PLAN.md](docs/PLAN.md) for the broader plan.
+
+This repository is also ready to be merged into the sibling `kprss` repository
+as `reader/`. See [docs/INTEGRATION.md](docs/INTEGRATION.md).

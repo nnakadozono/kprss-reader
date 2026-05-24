@@ -4,3 +4,4 @@ __pycache__/
 .pycache/
 *.pyc
 dist/
+.vscode/settings.json

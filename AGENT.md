@@ -19,6 +19,7 @@
 cp .env.sample .env
 python3 scripts/generate_site.py --out dist
 python3 -m http.server 8000 --directory dist
+scripts/deploy_site.sh
 ```
 
 ## Implementation notes
@@ -44,6 +45,9 @@ python3 -m http.server 8000 --directory dist
   during generation so desktop headline rows stay compact.
 - Do not add a backend for reader state unless the product direction changes.
 - Prefer small, dependency-free static code unless a real need appears.
+- Hosting should be owned by the `kprss` repository Terraform. This repo keeps
+  the reader app, generator, hosting notes, and manual deploy script. Deploy to
+  the existing bucket under `KPRSS_READER_SITE_PREFIX`, usually `reader/site`.
 
 ## Data assumptions
 
